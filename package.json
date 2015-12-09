@@ -1,0 +1,26 @@
+{
+  "name": "hearthystonies",
+  "version": "0.0.1",
+  "description": "This bot produces card images when a hearthstone card is mentioned.",
+  "main": "hearthystonies.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CGreff/hearthystonies.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CGreff/hearthystonies/issues"
+  },
+  "homepage": "https://github.com/CGreff/hearthystonies",
+  "dependencies": {
+    "slackbots": "^0.5.0",
+    "sqlite3": "^3.1.1"
+  },
+  "devDependencies": {
+    "unirest": "^0.4.2"
+  }
+}
