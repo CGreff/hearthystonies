@@ -1,1 +1,1 @@
-# hearthystonies
+# hearthystonies slack bot
