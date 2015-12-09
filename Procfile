@@ -1,1 +1,1 @@
-worker: node bin/squeegebot.js
+worker: node bin/hearthystonies.js
