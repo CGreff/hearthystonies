@@ -18,9 +18,6 @@
   "homepage": "https://github.com/CGreff/hearthystonies",
   "dependencies": {
     "slackbots": "^0.5.0",
-    "sqlite3": "^3.1.1"
-  },
-  "devDependencies": {
     "unirest": "^0.4.2"
   }
 }
