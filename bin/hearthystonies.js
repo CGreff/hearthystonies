@@ -10,14 +10,17 @@ var bot = new Bot({
 });
 
 bot.on('start', function() {
-    bot.postMessageToChannel('general', 'I link card images! Try it out: type "{Everyfin is Awesome}"!');
+    bot.postMessageToChannel('general', 'I link card images! Try it out by typing a card name surrounded by squiggly brackets!');
 });
 
 bot.on('message', function(data) {
     if (data.type === 'message') {
+        console.log("New Message:");
+        console.log(data);
         var message = data.text;
         var start = message.indexOf('{');
         var end = message.indexOf('}');
+
         if ( start !== -1) {
             getHearthStoneCardImageUri(message.substring(start + 1, end));
         }
