@@ -15,6 +15,14 @@ bot.on('start', function() {
 
 bot.on('message', function(data) {
     if (data.type === 'message') {
+
+        //If Brandon
+        if(data.user === 'U0DRGBFLZ') {
+                if (Math.random() <= 0.1) {
+                    bot.postMessageToChannel('general', 'Shutup, Brandon.');
+                }
+        }
+
         console.log("New Message:");
         console.log(data);
         var message = data.text;
