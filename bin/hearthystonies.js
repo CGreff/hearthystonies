@@ -1,5 +1,6 @@
 var unirest = require('unirest');
 var Bot = require('slackbots');
+var brandonInsulter = require('./brandon-insulter');
 
 var slackApiToken = process.env.SLACK_API_KEY;
 var hearthStoneApiToken = process.env.HEARTHSTONE_API_KEY;
@@ -19,7 +20,7 @@ bot.on('message', function(data) {
         //If Brandon
         if(data.user === 'U0DRGBFLZ') {
                 if (Math.random() <= 0.1) {
-                    bot.postMessageToChannel('general', 'Shutup, Brandon.');
+                    bot.postMessageToChannel('general', brandonInsulter.generateBrandonInsult());
                 }
         }
 
