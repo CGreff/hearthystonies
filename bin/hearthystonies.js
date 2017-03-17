@@ -41,7 +41,7 @@ var getHearthStoneCardImageUri = function(cardName) {
 		.header("X-Mashape-Key", hearthStoneApiToken)
 		.end(function (result) {
             if (typeof result.body[0].imgGold !== 'undefined') {
-  			   bot.postMessageToChannel('general', result.body[0].imgGold);
+  			   bot.postMessageToChannel('r_hearthstone', result.body[0].imgGold);
             }
 		});
 }
