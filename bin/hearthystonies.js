@@ -11,7 +11,6 @@ var bot = new Bot({
 });
 
 bot.on('start', function() {
-    bot.postMessageToChannel('general', 'I link card images! Try it out by typing a card name surrounded by squiggly brackets!');
 });
 
 bot.on('message', function(data) {
