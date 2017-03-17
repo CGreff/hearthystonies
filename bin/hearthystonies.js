@@ -1,6 +1,6 @@
 var unirest = require('unirest');
 var Bot = require('slackbots');
-var brandonInsulter = require('./brandon-insulter');
+// var brandonInsulter = require('./brandon-insulter');
 
 var slackApiToken = process.env.SLACK_API_KEY;
 var hearthStoneApiToken = process.env.HEARTHSTONE_API_KEY;
@@ -17,11 +17,11 @@ bot.on('message', function(data) {
     if (data.type === 'message') {
 
         //If Brandon
-        if(data.user === 'U0DRGBFLZ') {
-                if (Math.random() <= 0.1) {
-                    bot.postMessageToChannel('general', brandonInsulter.generateBrandonInsult());
-                }
-        }
+//         if(data.user === 'U0DRGBFLZ') {
+//                 if (Math.random() <= 0.1) {
+//                     bot.postMessageToChannel('general', brandonInsulter.generateBrandonInsult());
+//                 }
+//         }
 
         console.log("New Message:");
         console.log(data);
