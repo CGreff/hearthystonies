@@ -30,15 +30,13 @@ bot.on('message', function(data) {
         if ( start !== -1 && end !== -1) {
             var cardName = message.substring(start + 1, end);
             var cardList = getHearthStoneCards(cardName);
-            
-            if (Array.isArray(cardList)) {
-                if  (cardListcardList.length == 0) {
-                    console.log("Got no cards back for: " + cardList);
-                    postToChannel('Failed to find card: ' + cardName);
-                } else {
-                    console.log("Posting cards: " + cardList);
-                    postToChannel(buildCardMessage(cardList));
-                }
+        
+            if  (cardListcardList.length == 0) {
+                console.log("Got no cards back for: " + JSON.stringify(cardList));
+                postToChannel('Failed to find card: ' + cardName);
+            } else {
+                console.log("Posting cards: " + cardList);
+                postToChannel(buildCardMessage(cardList));            
             } 
         } 
     }
