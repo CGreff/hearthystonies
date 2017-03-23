@@ -55,8 +55,8 @@ var postToChannel = function(message) {
 }
 
 var getCardInfo = function(cardList) {
-    console.log("Got the following response: " + cardList);
-    var cardSummary = cardList.filter(function(card) {
+    console.log("Got the following response: " + JSON.stringify(cardList));
+    return cardList.filter(function(card) {
         return card.type === 'Minion' && card.cardSet !== 'Debug'
     }).map(function (card) {
         return {
