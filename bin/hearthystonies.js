@@ -46,7 +46,7 @@ var postToChannel = function(message) {
 
 var getCardInfo = function(cardList) {    
     return cardList.filter(function(card) {
-        return (card.type === 'Minion' || card.type === 'Spell') && card.cardSet !== 'Debug'
+        return (isMinion(card) || isSpell(card)) && card.cardSet !== 'Debug'
     }).map(function (card) {
         var cardImg;
         if (card.rarity === 'Legendary') {
@@ -66,6 +66,14 @@ var getCardInfo = function(cardList) {
             img: cardImg
         }
     });
+}
+
+var isMinion = function(card) {
+    return card.type === 'Minion'
+}
+
+var isSpell = function(card) {
+    return card.type === 'Spell' && card.playerClass !== 'Neutral'; 
 }
 
 var getHearthStoneCards= function(cardName) {    
