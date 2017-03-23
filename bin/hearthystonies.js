@@ -29,12 +29,14 @@ bot.on('message', function(data) {
 
         if ( start !== -1 && end !== -1) {
             var cardName = message.substring(start + 1, end);
-            var cardList = getHearthStoneCardImageUri(cardName);
+            var cardList = getHearthStoneCards(cardName);
             
             if (Array.isArray(cardList)) {
                 if  (cardListcardList.length == 0) {
+                    console.log("Got no cards back for: " + cardList);
                     postToChannel('Failed to find card: ' + cardName);
                 } else {
+                    console.log("Posting cards: " + cardList);
                     postToChannel(buildCardMessage(cardList));
                 }
             } 
@@ -53,6 +55,7 @@ var postToChannel = function(message) {
 }
 
 var getCardInfo = function(cardList) {
+    console.log("Got the following response: " + cardList);
     var cardSummary = cardList.filter(function(card) {
         return card.type === 'Minion' && card.cardSet !== 'Debug'
     }).map(function (card) {
@@ -70,7 +73,7 @@ var getCardInfo = function(cardList) {
     });
 }
 
-var getHearthStoneCardImageUri = function(cardName) {    
+var getHearthStoneCards= function(cardName) {    
     unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/" + encodeURIComponent(cardName))
         .header("X-Mashape-Key", hearthStoneApiToken)
         .end(function(response) {
