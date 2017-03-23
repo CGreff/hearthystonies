@@ -27,7 +27,7 @@ bot.on('message', function(data) {
         var start = message.indexOf('{');
         var end = message.indexOf('}');
 
-        if ((start !== -1 && end !== -1) && (end - start > 5)) {
+        if ((start !== -1 && end !== -1) && (end - start > 4)) {
             var cardName = message.substring(start + 1, end);
             var cardList = getHearthStoneCards(cardName);    
         } 
@@ -57,7 +57,7 @@ var getCardInfo = function(cardList) {
             attack: card.attack,
             health: card.health,
             text: card.text,
-            img: card.imgGold
+            img: card.img
         }
     });
 }
