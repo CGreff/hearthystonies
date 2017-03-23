@@ -46,7 +46,7 @@ var postToChannel = function(message) {
 
 var getCardInfo = function(cardList) {    
     return cardList.filter(function(card) {
-        return card.type === 'Minion' && card.cardSet !== 'Debug'
+        return (card.type === 'Minion' || card.type === 'Spell') && card.cardSet !== 'Debug'
     }).map(function (card) {
         var cardImg;
         if (card.rarity === 'Legendary') {
