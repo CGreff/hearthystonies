@@ -66,15 +66,23 @@ var getHearthStoneCards= function(cardName) {
     var request = unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/" + encodeURIComponent(cardName))
         .header("X-Mashape-Key", hearthStoneApiToken)
         .end(function(response) {
-            cards = getCardInfo(response.body);
-            console.log("Received Card List: " + JSON.stringify(cards));
+            if (!response.body.hasOwnProperty('error')) {
+                cards = getCardInfo(response.body);
+                console.log("Received Card List: " + JSON.stringify(cards));
             
-            if  (cards.length == 0) {
-                console.log("Got no cards back for: " + JSON.stringify(cards));
-                postToChannel('Failed to find card: ' + cardName);
+                if  (cards.length > 0)  {
+                    console.log("Posting cards: " + cards);
+                    postToChannel(buildCardMessage(cards));
+                } else {
+                    failedToFind(cardName);
+                }
             } else {
-                console.log("Posting cards: " + cards);
-                postToChannel(buildCardMessage(cards));            
-            }     
+                    failedToFind(cardName);
+                } 
         });
+}
+
+var failedToFind = function(cardName) {
+    console.log("Got no cards back for: " +cardName);
+    postToChannel('Failed to find card: ' + cardName);
 }
