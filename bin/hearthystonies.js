@@ -46,7 +46,7 @@ var postToChannel = function(message) {
 
 var getCardInfo = function(cardList) {    
     return cardList.filter(function(card) {
-        return (isMinion(card) || isSpell(card)) && card.cardSet !== 'Debug'
+        return (isPlayable()) && card.cardSet !== 'Debug'
     }).map(function (card) {
         var cardImg;
         if (card.rarity === 'Legendary') {
@@ -68,8 +68,16 @@ var getCardInfo = function(cardList) {
     });
 }
 
+var isPlayable = function(card) {
+    return isMinion(card) || isSpell(card) || isWeapon();
+}
+
 var isMinion = function(card) {
     return card.type === 'Minion'
+}
+
+var isWeapon = function(card) {
+    return card.type === 'Weapon'
 }
 
 var isSpell = function(card) {
