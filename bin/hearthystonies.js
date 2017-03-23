@@ -31,6 +31,7 @@ bot.on('message', function(data) {
             var cardName = message.substring(start + 1, end);
             var cardList = getHearthStoneCards(cardName);
         
+            console.log("Received Card List: " + JSON.stringify(cardList));
             if  (cardList.length == 0) {
                 console.log("Got no cards back for: " + JSON.stringify(cardList));
                 postToChannel('Failed to find card: ' + cardName);
@@ -52,8 +53,7 @@ var postToChannel = function(message) {
     bot.postMessageToChannel('r_hearthstone', message);
 }
 
-var getCardInfo = function(cardList) {
-    console.log("Got the following response: " + JSON.stringify(cardList));
+var getCardInfo = function(cardList) {    
     return cardList.filter(function(card) {
         return card.type === 'Minion' && card.cardSet !== 'Debug'
     }).map(function (card) {
@@ -79,5 +79,6 @@ var getHearthStoneCards= function(cardName) {
             cards = getCardInfo(response.body);    
     });
     
+    console.log("Returning this: " +  JSON.stringify(cards));
     return cards;
 }
