@@ -88,6 +88,7 @@ var getHearthStoneCards= function(cardName) {
     var request = unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/" + encodeURIComponent(cardName))
         .header("X-Mashape-Key", hearthStoneApiToken)
         .end(function(response) {
+            console.log('Received response body: \n' + JSON.stringify(response.body))
             if (!response.body.hasOwnProperty('error')) {
                 cards = getCardInfo(response.body);
                 console.log("Received Card List: " + JSON.stringify(cards));
