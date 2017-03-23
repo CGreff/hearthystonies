@@ -29,16 +29,7 @@ bot.on('message', function(data) {
 
         if ( start !== -1 && end !== -1) {
             var cardName = message.substring(start + 1, end);
-            var cardList = getHearthStoneCards(cardName);
-        
-            console.log("Received Card List: " + JSON.stringify(cardList));
-            if  (cardList.length == 0) {
-                console.log("Got no cards back for: " + JSON.stringify(cardList));
-                postToChannel('Failed to find card: ' + cardName);
-            } else {
-                console.log("Posting cards: " + cardList);
-                postToChannel(buildCardMessage(cardList));            
-            } 
+            var cardList = getHearthStoneCards(cardName);    
         } 
     }
 });
@@ -72,13 +63,18 @@ var getCardInfo = function(cardList) {
 }
 
 var getHearthStoneCards= function(cardName) {    
-    var cards;
-    unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/" + encodeURIComponent(cardName))
+    var request = unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/" + encodeURIComponent(cardName))
         .header("X-Mashape-Key", hearthStoneApiToken)
         .end(function(response) {
-            cards = getCardInfo(response.body);    
-    });
-    
-    console.log("Returning this: " +  JSON.stringify(cards));
-    return cards;
+            cards = getCardInfo(response.body);
+            console.log("Received Card List: " + JSON.stringify(cards));
+            
+            if  (cards.length == 0) {
+                console.log("Got no cards back for: " + JSON.stringify(cards));
+                postToChannel('Failed to find card: ' + cardName);
+            } else {
+                console.log("Posting cards: " + cards);
+                postToChannel(buildCardMessage(cards));            
+            }     
+        });
 }
