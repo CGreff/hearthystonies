@@ -31,7 +31,7 @@ bot.on('message', function(data) {
             var cardName = message.substring(start + 1, end);
             var cardList = getHearthStoneCards(cardName);
         
-            if  (cardListcardList.length == 0) {
+            if  (cardList.length == 0) {
                 console.log("Got no cards back for: " + JSON.stringify(cardList));
                 postToChannel('Failed to find card: ' + cardName);
             } else {
