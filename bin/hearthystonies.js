@@ -77,7 +77,7 @@ var isSpell = function(card) {
 }
 
 var getHearthStoneCards= function(cardName) {    
-    var request = unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/" + encodeURIComponent(cardName + "&collectible=1"))
+    var request = unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/" + encodeURIComponent(cardName))
         .header("X-Mashape-Key", hearthStoneApiToken)
         .end(function(response) {
             if (!response.body.hasOwnProperty('error')) {
