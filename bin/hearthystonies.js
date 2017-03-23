@@ -52,7 +52,7 @@ var getCardInfo = function(cardList) {
         if (card.rarity === 'Legendary') {
             cardImg = card.imgGold;
         } else {
-            cardImg = carg.img;
+            cardImg = card.img;
         }
         return {
             name: card.name,
