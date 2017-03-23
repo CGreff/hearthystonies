@@ -48,6 +48,12 @@ var getCardInfo = function(cardList) {
     return cardList.filter(function(card) {
         return card.type === 'Minion' && card.cardSet !== 'Debug'
     }).map(function (card) {
+        var cardImg;
+        if (card.rarity === 'Legendary') {
+            cardImg = card.imgGold;
+        } else {
+            cardImg = carg.img;
+        }
         return {
             name: card.name,
             class: card.playerClass,
@@ -57,7 +63,7 @@ var getCardInfo = function(cardList) {
             attack: card.attack,
             health: card.health,
             text: card.text,
-            img: card.img
+            img: cardImg
         }
     });
 }
