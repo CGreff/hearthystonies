@@ -24,10 +24,12 @@ bot.on('message', function(data) {
             var cardName = message.substring(start + 1, end);
             var cardList = getHearthStoneCardImageUri(cardName);
             
-            if  (cardList.length == 0) {
-                postToChannel('Failed to find card: ' + cardName);
-            } else {
-                postToChannel(buildCardMessage(cardList));
+            if (Array.isArray(cardList)) {
+                if  (cardListcardList.length == 0) {
+                    postToChannel('Failed to find card: ' + cardName);
+                } else {
+                    postToChannel(buildCardMessage(cardList));
+                }
             } 
         } 
     }
@@ -65,6 +67,6 @@ var getHearthStoneCardImageUri = function(cardName) {
     unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/" + encodeURIComponent(cardName))
         .header("X-Mashape-Key", hearthStoneApiToken)
         .end(function(response) {
-            return getCardInfo(response);
+            return getCardInfo(response.body);
         });
 }
