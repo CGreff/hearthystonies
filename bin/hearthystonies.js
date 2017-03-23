@@ -69,7 +69,7 @@ var getCardInfo = function(cardList) {
 }
 
 var isPlayable = function(card) {
-    return isMinion(card) || isSpell(card) || isWeapon();
+    return isMinion(card) || isSpell(card) || isWeapon(card);
 }
 
 var isMinion = function(card) {
