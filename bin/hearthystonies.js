@@ -27,7 +27,7 @@ bot.on('message', function(data) {
         var start = message.indexOf('{');
         var end = message.indexOf('}');
 
-        if ( start !== -1 && end !== -1) {
+        if ((start !== -1 && end !== -1) && (end - start > 2)) {
             var cardName = message.substring(start + 1, end);
             var cardList = getHearthStoneCards(cardName);    
         } 
