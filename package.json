@@ -4,6 +4,7 @@
   "description": "This bot produces card images when a hearthstone card is mentioned.",
   "main": "hearthystonies.js",
   "scripts": {
+    "start": "node bin/hearthystonies.js"
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
