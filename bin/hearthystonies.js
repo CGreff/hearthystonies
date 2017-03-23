@@ -46,7 +46,7 @@ var postToChannel = function(message) {
 
 var getCardInfo = function(cardList) {    
     return cardList.filter(function(card) {
-        return (isPlayable()) && card.cardSet !== 'Debug'
+        return (isPlayable(card) && card.cardSet !== 'Debug')
     }).map(function (card) {
         var cardImg;
         if (card.rarity === 'Legendary') {
