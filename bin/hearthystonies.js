@@ -72,9 +72,12 @@ var getCardInfo = function(cardList) {
 }
 
 var getHearthStoneCards= function(cardName) {    
+    var cards;
     unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/" + encodeURIComponent(cardName))
         .header("X-Mashape-Key", hearthStoneApiToken)
         .end(function(response) {
-            return getCardInfo(response.body);
-        });
+            cards = getCardInfo(response.body);    
+    });
+    
+    return cards;
 }
