@@ -1,5 +1,12 @@
 var unirest = require('unirest');
 var Bot = require('slackbots');
+var express = require('express');
+var app = express();
+
+app.set('port', (process.env.PORT || 5000));
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
 
 var slackApiToken = process.env.SLACK_API_KEY;
 var hearthStoneApiToken = process.env.HEARTHSTONE_API_KEY;
